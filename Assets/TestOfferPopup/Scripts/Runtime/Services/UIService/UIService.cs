@@ -26,7 +26,8 @@ namespace TestOfferPopup.Services
         {
             Assert.IsNotNull(_canvasPrefab);
 
-            _canvas = _canvasPrefab.Instantiate();
+            _canvas = _canvasPrefab.Instantiate().WithName(_canvasPrefab.name);
+            _canvas.gameObject.DontDestroyOnLoad();
 
             return UniTask.CompletedTask;
         }
