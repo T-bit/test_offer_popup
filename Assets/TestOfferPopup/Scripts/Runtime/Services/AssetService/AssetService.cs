@@ -12,7 +12,7 @@ namespace TestOfferPopup.Services
     /// <summary>
     /// Basic implementation, without counters.
     /// </summary>
-    public class AssetService : Service, IAssetService
+    public sealed class AssetService : Service, IAssetService
     {
         [NonSerialized]
         private readonly Dictionary<string, AsyncOperationHandle<Object>> _entries = new Dictionary<string, AsyncOperationHandle<Object>>();

@@ -8,9 +8,9 @@ using UnityEngine;
 namespace TestOfferPopup
 {
     /// <summary>
-    /// Basic game logic. Just runs services.
+    /// Basic game logic. Just runs services and opens main screen.
     /// </summary>
-    public class Game : MonoBehaviour
+    public class Game : MonoSingleton<Game>, IGame
     {
         private readonly List<IService> _services = new List<IService>();
         private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
@@ -27,10 +27,17 @@ namespace TestOfferPopup
             return _services.ReleaseAsync(cancellationToken);
         }
 
+        #region IGame
+
+        IEnumerable<IService> IGame.Services => _services;
+
+        #endregion
+
         #region Unity
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             gameObject.GetComponentsInChildren(_services);
         }
 
@@ -46,10 +53,11 @@ namespace TestOfferPopup
             StopAsync(CancellationToken).Forget();
         }
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
             _cancellationTokenSource.Cancel();
             _cancellationTokenSource.Dispose();
+            base.OnDestroy();
         }
 
         #endregion
