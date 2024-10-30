@@ -1,0 +1,17 @@
+{
+    "name": "TestOfferPopup.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6c07a934332eff6408f9784b58436c32",
+        "GUID:69448af7b92c7f342b298e06a37122aa"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
