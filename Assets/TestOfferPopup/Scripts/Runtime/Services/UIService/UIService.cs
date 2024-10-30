@@ -5,6 +5,7 @@ using Cysharp.Threading.Tasks;
 using TestOfferPopup.Extensions;
 using TestOfferPopup.Fragments;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace TestOfferPopup.Services
 {
@@ -13,15 +14,28 @@ namespace TestOfferPopup.Services
     /// </summary>
     public class UIService : Service, IUIService
     {
+        private Canvas _canvas;
+
         [NonSerialized]
         private readonly Dictionary<IFragmentModel, IFragment> _fragments = new Dictionary<IFragmentModel, IFragment>();
 
         [SerializeField]
-        private Canvas _canvas;
+        private Canvas _canvasPrefab;
+
+        protected override UniTask OnInitializeAsync(CancellationToken cancellationToken)
+        {
+            Assert.IsNotNull(_canvasPrefab);
+
+            _canvas = _canvasPrefab.Instantiate();
+
+            return UniTask.CompletedTask;
+        }
 
         protected override UniTask OnReleaseAsync(CancellationToken cancellationToken)
         {
             _fragments.Clear();
+            _canvas.Destroy();
+            _canvas = null;
 
             return UniTask.CompletedTask;
         }

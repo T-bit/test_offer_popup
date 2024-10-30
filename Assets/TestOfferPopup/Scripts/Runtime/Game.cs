@@ -8,7 +8,7 @@ using UnityEngine;
 namespace TestOfferPopup
 {
     /// <summary>
-    /// Basic game logic. Just runs services and opens main screen.
+    /// Basic game logic. Just runs services (without prioritization) and opens main screen.
     /// </summary>
     public class Game : MonoSingleton<Game>, IGame
     {
@@ -50,6 +50,7 @@ namespace TestOfferPopup
 
         private void OnApplicationQuit()
         {
+            Debug.Log("Game stop.".AddContext(this));
             StopAsync(CancellationToken).Forget();
         }
 
