@@ -12,7 +12,7 @@ namespace TestOfferPopup.Services
     {
         IEnumerable<IFragment> ActiveFragments { get; }
 
-        UniTask<IFragment> OpenFragmentAsync(Reference<IFragment> fragmentReference, IFragmentModel fragmentModel, CancellationToken cancellationToken);
+        UniTask OpenFragmentAsync(Reference<IFragment> fragmentReference, IFragmentModel fragmentModel, CancellationToken cancellationToken);
 
         UniTask CloseFragmentAsync(IFragmentModel fragmentModel, CancellationToken cancellationToken);
     }

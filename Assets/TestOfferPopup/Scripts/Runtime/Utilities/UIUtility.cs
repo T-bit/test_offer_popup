@@ -1,6 +1,5 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
-using TestOfferPopup.Extensions;
 using TestOfferPopup.Fragments;
 using TestOfferPopup.Services;
 
@@ -10,7 +9,13 @@ namespace TestOfferPopup.Utilities
     {
         private static IUIService Service => GameUtility.GetService<IUIService>();
 
-        public static UniTask<IFragment> OpenFragmentAsync(Reference<IFragment> fragmentReference, IFragmentModel fragmentModel, CancellationToken cancellationToken)
+        public static UniTask OpenFragmentAsync<T>(IFragmentModel fragmentModel, CancellationToken cancellationToken)
+        {
+            var fragmentReference = AssetUtility.GetReferenceByAddress<IFragment>($"{nameof(Fragments)}/{typeof(T).Name}");
+            return OpenFragmentAsync(fragmentReference, fragmentModel, cancellationToken);
+        }
+
+        public static UniTask OpenFragmentAsync(Reference<IFragment> fragmentReference, IFragmentModel fragmentModel, CancellationToken cancellationToken)
         {
             return Service.OpenFragmentAsync(fragmentReference, fragmentModel, cancellationToken);
         }
@@ -18,11 +23,6 @@ namespace TestOfferPopup.Utilities
         public static UniTask CloseFragmentAsync(IFragmentModel fragmentModel, CancellationToken cancellationToken)
         {
             return Service.CloseFragmentAsync(fragmentModel, cancellationToken);
-        }
-
-        public static UniTask CloseFragmentAsync(Reference<IFragment> fragmentReference, CancellationToken cancellationToken)
-        {
-            return Service.CloseFragmentAsync(fragmentReference, cancellationToken);
         }
     }
 }

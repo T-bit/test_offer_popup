@@ -9,6 +9,8 @@ namespace TestOfferPopup.Services
     /// </summary>
     public interface IAssetService : IService
     {
+        IAssetCache AssetCache { get; }
+
         UniTask<Object> LoadAsync(Reference reference, CancellationToken cancellationToken);
 
         void Unload(Reference reference);

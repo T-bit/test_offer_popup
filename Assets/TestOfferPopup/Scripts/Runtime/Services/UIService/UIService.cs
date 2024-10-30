@@ -45,22 +45,20 @@ namespace TestOfferPopup.Services
 
         IEnumerable<IFragment> IUIService.ActiveFragments => _fragments.Values;
 
-        async UniTask<IFragment> IUIService.OpenFragmentAsync(Reference<IFragment> fragmentReference, IFragmentModel fragmentModel, CancellationToken cancellationToken)
+        async UniTask IUIService.OpenFragmentAsync(Reference<IFragment> fragmentReference, IFragmentModel fragmentModel, CancellationToken cancellationToken)
         {
-            if (_fragments.TryGetValue(fragmentModel, out var fragment))
+            if (_fragments.ContainsKey(fragmentModel))
             {
-                return fragment;
+                return;
             }
 
             using var linkedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(CancellationToken, cancellationToken);
             var linkedToken = linkedTokenSource.Token;
             var fragmentPrefab = await fragmentReference.LoadAsync(linkedToken);
 
-            _fragments[fragmentModel] = fragment = fragmentPrefab.Clone(_canvas.transform);
+            var fragment = _fragments[fragmentModel] = fragmentPrefab.Clone(_canvas.transform);
 
             await fragment.OpenAsync(fragmentModel, linkedToken);
-
-            return fragment;
         }
 
         async UniTask IUIService.CloseFragmentAsync(IFragmentModel fragmentModel, CancellationToken cancellationToken)

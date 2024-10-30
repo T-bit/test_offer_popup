@@ -37,6 +37,8 @@ namespace TestOfferPopup.Services
 
         #region IAssetService
 
+        IAssetCache IAssetService.AssetCache => _assetCache;
+
         UniTask<Object> IAssetService.LoadAsync(Reference reference, CancellationToken cancellationToken)
         {
             var key = reference.AssetGuid;

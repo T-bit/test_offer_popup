@@ -23,7 +23,6 @@ namespace TestOfferPopup.Services
 
         private void Cache()
         {
-            // TODO: Check
             var resourceLocationMaps = Addressables.ResourceLocators.OfType<ResourceLocationMap>();
 
             foreach (var resourceLocationMap in resourceLocationMaps)
