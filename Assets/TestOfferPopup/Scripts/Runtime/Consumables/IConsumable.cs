@@ -2,7 +2,7 @@
 
 namespace TestOfferPopup.Consumables
 {
-    public interface IConsumable
+    public interface IConsumable : IAddressable<IConsumable>
     {
         string Title { get; }
 

@@ -1,4 +1,5 @@
-﻿using TestOfferPopup.Utilities;
+﻿using System.Collections.Generic;
+using TestOfferPopup.Utilities;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,36 +8,48 @@ namespace TestOfferPopup.Drawers
     [CustomPropertyDrawer(typeof(IReference), true)]
     public sealed class ReferencePropertyDrawer : PropertyDrawer
     {
-        private Object _asset;
+        private readonly Dictionary<SerializedProperty, Object> _currentAssets = new Dictionary<SerializedProperty, Object>();
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             // TODO: Filter types
             var assetGuidProperty = property.FindPropertyRelative("_assetGuid");
 
-            LoadAsset(assetGuidProperty.stringValue);
+            LoadAsset(property, assetGuidProperty.stringValue);
 
-            var selectedObject = EditorGUI.ObjectField(position, label, _asset, typeof(Object), false);
+            var selectedAsset = EditorGUI.ObjectField(position, label, GetCurrentAsset(property), typeof(Object), false);
 
-            if (selectedObject == null || !EditorAssetUtility.TryGetAssetGuid(selectedObject, out var assetGuid))
+            if (selectedAsset == null || !EditorAssetUtility.TryGetAssetGuid(selectedAsset, out var assetGuid))
             {
                 return;
             }
 
-            _asset = selectedObject;
             assetGuidProperty.stringValue = assetGuid;
+            SetCurrentAsset(property, selectedAsset);
         }
 
-        private void LoadAsset(string assetGuid)
+        private Object GetCurrentAsset(SerializedProperty property)
         {
-            if (string.IsNullOrWhiteSpace(assetGuid) || _asset != null)
+            return _currentAssets.TryGetValue(property, out var asset)
+                ? asset
+                : null;
+        }
+
+        private void SetCurrentAsset(SerializedProperty property, Object asset)
+        {
+            _currentAssets[property] = asset;
+        }
+
+        private void LoadAsset(SerializedProperty property, string assetGuid)
+        {
+            if (string.IsNullOrWhiteSpace(assetGuid) || GetCurrentAsset(property) != null)
             {
                 return;
             }
 
             var assetPath = AssetDatabase.GUIDToAssetPath(assetGuid);
 
-            _asset = AssetDatabase.LoadAssetAtPath<Object>(assetPath);
+            SetCurrentAsset(property, AssetDatabase.LoadAssetAtPath<Object>(assetPath));
         }
     }
 }
