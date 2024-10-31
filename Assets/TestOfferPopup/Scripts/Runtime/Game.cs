@@ -2,7 +2,9 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using TestOfferPopup.Extensions;
+using TestOfferPopup.Fragments;
 using TestOfferPopup.Services;
+using TestOfferPopup.Utilities;
 using UnityEngine;
 
 namespace TestOfferPopup
@@ -17,9 +19,10 @@ namespace TestOfferPopup
 
         private CancellationToken CancellationToken => _cancellationTokenSource.Token;
 
-        private UniTask StartAsync(CancellationToken cancellationToken)
+        private async UniTask StartAsync(CancellationToken cancellationToken)
         {
-            return _services.InitializeAsync(cancellationToken);
+            await _services.InitializeAsync(cancellationToken);
+            await UIUtility.OpenFragmentAsync<MainScreen>(new EmptyFragmentModel(), cancellationToken);
         }
 
         private UniTask StopAsync(CancellationToken cancellationToken)
