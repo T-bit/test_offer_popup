@@ -65,6 +65,22 @@ MonoBehaviour:
     m_Address: Assets/TestOfferPopup/Consumables/Stone_Icon.png
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: ca7f3b1bce3b169418cdbea5bf868f13
+    m_Address: Offer/Offer_Wood
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ec264196fbb98c64e8bd0ae59531c1b6
+    m_Address: Offer/Offer_Resources
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f24fab29b949573409941d17b9fc644c
+    m_Address: Assets/TestOfferPopup/Offers/Offer_Wood_Icon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3d2d574a475bb8041b796d04fcb67e7c
+    m_Address: Assets/TestOfferPopup/Offers/Offer_Resources_Icon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 7d5306bef2667e746814134146121f51, type: 2}
   m_SchemaSet:
