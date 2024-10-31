@@ -25,7 +25,7 @@ namespace TestOfferPopup
             _mainScreenModel = new EmptyFragmentModel();
 
             await _services.InitializeAsync(cancellationToken);
-            await UIUtility.OpenFragmentAsync<MainScreen>(_mainScreenModel, cancellationToken);
+            await UIUtility.OpenFragmentAsync<MainScreenView>(_mainScreenModel, cancellationToken);
         }
 
         private async UniTask StopAsync(CancellationToken cancellationToken)
@@ -40,6 +40,8 @@ namespace TestOfferPopup
         #region IGame
 
         IEnumerable<IService> IGame.Services => _services;
+
+        CancellationToken IGame.CancellationToken => CancellationToken;
 
         #endregion
 

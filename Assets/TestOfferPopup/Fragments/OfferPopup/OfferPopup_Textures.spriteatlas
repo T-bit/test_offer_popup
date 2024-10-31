@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: OfferPopup_Textures
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 59be9af4d950f86409669a2cb6d748d9, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: a5ba3ba6e618d7f4ab7e7e29848dcc86, type: 3}
+  - {fileID: 21300000, guid: 5d1404b87b3bc1b41aed9ad6ca7054c4, type: 3}
+  - {fileID: 21300000, guid: 2122767d1844959499cf0ab32ced7307, type: 3}
+  - {fileID: 21300000, guid: e84efbbed44eef649bda4338109152fd, type: 3}
+  - {fileID: 21300000, guid: 29a428ff41938fa4ab50cbbc3a78c450, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Popup_Title_Gradient
+  - Popup_Discount
+  - Popup_Background
+  - Popup_Button
+  - Popup_Offer_Background
+  m_RenderDataMap: {}
+  m_Tag: OfferPopup_Textures
+  m_IsVariant: 0

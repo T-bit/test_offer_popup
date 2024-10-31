@@ -11,13 +11,14 @@ using UnityEngine.UI;
 
 namespace TestOfferPopup.Fragments
 {
-    public sealed class MainScreen : FragmentBehaviour<EmptyFragmentModel>
+    public sealed class MainScreenView : FragmentBehaviour<EmptyFragmentModel>
     {
         private readonly List<string> _offerAddresses = new List<string>();
         private readonly List<string> _consumableAddresses = new List<string>();
         private readonly List<OfferConsumableView> _offerConsumableViews = new List<OfferConsumableView>();
 
         private CancellationTokenSource _setOfferCancellationTokenSource;
+        private bool _offerPopupOpened;
 
         private Reference<Sprite> _iconReference;
 
@@ -186,6 +187,15 @@ namespace TestOfferPopup.Fragments
             }
         }
 
+        private async UniTask OpenOfferPopupAsync(CancellationToken cancellationToken)
+        {
+            var offerPopupModel = new OfferPopupFragmentModel();
+            await UIUtility.OpenFragmentAsync<OfferPopupView>(offerPopupModel, cancellationToken);
+            await offerPopupModel.CloseSource.Task;
+
+            Debug.Log($"{nameof(OfferPopupView)} is closed. Purchase {(offerPopupModel.Purchased ? "succeeded" : "failed")}.");
+        }
+
         private void OnConsumableDeleteClick(OfferConsumableView offerConsumableView)
         {
             _offerConsumableViews.Remove(offerConsumableView);
@@ -201,7 +211,12 @@ namespace TestOfferPopup.Fragments
 
         private void OnOpenPopupButtonClick()
         {
-            // TODO: Open popup
+            if (_offerPopupOpened)
+            {
+                return;
+            }
+
+            OpenOfferPopupAsync(gameObject.GetCancellationTokenOnDestroy()).Forget();
         }
 
         private void OnAddConsumableButtonClick()

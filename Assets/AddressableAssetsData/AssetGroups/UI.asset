@@ -18,7 +18,11 @@ MonoBehaviour:
   m_GUID: 1c9d24147aebdb446b54c0dbd2253dca
   m_SerializeEntries:
   - m_GUID: efd1d7705ca5f8c4fb1d2f10539cec61
-    m_Address: Fragment/MainScreen
+    m_Address: Fragment/MainScreenView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7d3991b469665474083d60b016510f54
+    m_Address: Fragment/OfferPopupView
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
