@@ -11,7 +11,7 @@ namespace TestOfferPopup.Utilities
 
         public static UniTask OpenFragmentAsync<T>(IFragmentModel fragmentModel, CancellationToken cancellationToken)
         {
-            var fragmentReference = AssetUtility.GetReferenceByAddress<IFragment>($"{nameof(Fragments)}/{typeof(T).Name}");
+            var fragmentReference = AssetUtility.GetReferenceByAddress<IFragment>($"{nameof(Fragment)}/{typeof(T).Name}");
             return OpenFragmentAsync(fragmentReference, fragmentModel, cancellationToken);
         }
 

@@ -23,16 +23,16 @@ namespace TestOfferPopup.Services
 
         private void Cache()
         {
-            var resourceLocationMaps = Addressables.ResourceLocators.OfType<ResourceLocationMap>();
-
-            foreach (var resourceLocationMap in resourceLocationMaps)
+            foreach (var resourceLocator in Addressables.ResourceLocators)
             {
-                foreach (var keyLocations in resourceLocationMap.Locations)
+                foreach (var key in resourceLocator.Keys)
                 {
-                    var key = keyLocations.Key;
-                    var locations = keyLocations.Value;
-
                     if (!(key is string guid) || !guid.IsGuid())
+                    {
+                        continue;
+                    }
+
+                    if (!resourceLocator.Locate(key, null, out var locations))
                     {
                         continue;
                     }
