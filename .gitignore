@@ -73,3 +73,13 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Addressables bundle files
+/Assets/AddressableAssetsData/Windows/*
+/Assets/AddressableAssetsData/Windows.meta
+/Assets/AddressableAssetsData/OSX/*
+/Assets/AddressableAssetsData/OSX.meta
+/Assets/AddressableAssetsData/link.xml
+/Assets/AddressableAssetsData/link.xml.meta
+
+*.DS_Store
