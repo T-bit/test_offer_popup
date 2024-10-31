@@ -5,6 +5,7 @@ namespace TestOfferPopup
     public abstract class AddressableScriptableObject : ScriptableObject, IAddressable
     {
         [SerializeField]
+        [HideInInspector]
         private Reference _reference;
 
         protected virtual string Name => name;

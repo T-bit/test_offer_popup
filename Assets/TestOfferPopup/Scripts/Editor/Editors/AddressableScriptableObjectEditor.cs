@@ -1,7 +1,6 @@
-﻿using TestOfferPopup.Extensions;
+﻿using TestOfferPopup.Helpers;
 using TestOfferPopup.Utilities;
 using UnityEditor;
-using UnityEngine;
 
 namespace TestOfferPopup.Editors
 {
@@ -9,27 +8,15 @@ namespace TestOfferPopup.Editors
     [CustomEditor(typeof(AddressableScriptableObject), true)]
     public class AddressableScriptableObjectEditor : Editor
     {
-        private const string ReferencePath = "_reference";
-
         private void OnEnable()
         {
-            var referenceProperty = serializedObject.FindProperty(ReferencePath);
-
-            if (!(referenceProperty is { propertyType: SerializedPropertyType.ManagedReference }))
+            foreach (var targetObject in serializedObject.targetObjects)
             {
-                Debug.LogError($"Couldn't get {nameof(SerializedPropertyType.ManagedReference)} property at path {ReferencePath}.".AddContext(this));
-                return;
+                if (EditorAssetUtility.TryGetAssetGuid(targetObject, out var assetGuid))
+                {
+                    ReferenceHelper.SetReference<AddressableScriptableObject>(targetObject, new Reference(assetGuid));
+                }
             }
-
-            // TODO: Debug and fix
-            var asset = serializedObject.targetObject;
-
-            if (asset == null || !EditorAssetUtility.TryGetAssetGuid(asset, out var assetGuid))
-            {
-                return;
-            }
-
-            referenceProperty.managedReferenceValue = new Reference(assetGuid);
         }
     }
 }
