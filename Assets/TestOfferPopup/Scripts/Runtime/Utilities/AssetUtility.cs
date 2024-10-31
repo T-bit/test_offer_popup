@@ -51,9 +51,10 @@ namespace TestOfferPopup.Utilities
             return reference;
         }
 
-        public static UniTask<Object> LoadAsync(Reference reference, CancellationToken cancellationToken)
+        public static UniTask<Object> LoadAsync<T>(Reference reference, CancellationToken cancellationToken)
+            where T : class
         {
-            return Service.LoadAsync(reference, cancellationToken);
+            return Service.LoadAsync<T>(reference, cancellationToken);
         }
 
         public static void Unload(Reference reference)

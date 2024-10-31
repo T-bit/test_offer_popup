@@ -7,7 +7,7 @@ using UnityEngine.Assertions;
 namespace TestOfferPopup
 {
     [Serializable]
-    public struct Reference : IComparable<Reference>
+    public struct Reference : IComparable<Reference>, IReference
     {
         [SerializeField]
         private string _assetGuid;
@@ -59,7 +59,7 @@ namespace TestOfferPopup
     }
 
     [Serializable]
-    public struct Reference<T> : IComparable<Reference<T>>
+    public struct Reference<T> : IComparable<Reference<T>>, IReference
         where T : class
     {
         [SerializeField]

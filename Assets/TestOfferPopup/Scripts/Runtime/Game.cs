@@ -18,21 +18,30 @@ namespace TestOfferPopup
         private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
 
         private CancellationToken CancellationToken => _cancellationTokenSource.Token;
+        private EmptyFragmentModel _mainScreenModel;
 
         private async UniTask StartAsync(CancellationToken cancellationToken)
         {
+            _mainScreenModel = new EmptyFragmentModel();
+
             await _services.InitializeAsync(cancellationToken);
-            await UIUtility.OpenFragmentAsync<MainScreen>(new EmptyFragmentModel(), cancellationToken);
+            await UIUtility.OpenFragmentAsync<MainScreenView>(_mainScreenModel, cancellationToken);
         }
 
-        private UniTask StopAsync(CancellationToken cancellationToken)
+        private async UniTask StopAsync(CancellationToken cancellationToken)
         {
-            return _services.ReleaseAsync(cancellationToken);
+            await UIUtility.CloseFragmentAsync(_mainScreenModel, cancellationToken);
+
+            _mainScreenModel = null;
+
+            await _services.ReleaseAsync(cancellationToken);
         }
 
         #region IGame
 
         IEnumerable<IService> IGame.Services => _services;
+
+        CancellationToken IGame.CancellationToken => CancellationToken;
 
         #endregion
 

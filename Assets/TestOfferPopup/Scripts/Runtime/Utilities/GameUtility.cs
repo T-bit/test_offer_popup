@@ -1,4 +1,5 @@
-﻿using TestOfferPopup.Exceptions;
+﻿using System.Threading;
+using TestOfferPopup.Exceptions;
 using TestOfferPopup.Extensions;
 using TestOfferPopup.Services;
 using UnityEngine;
@@ -8,6 +9,8 @@ namespace TestOfferPopup.Utilities
     public static class GameUtility
     {
         private static IGame GameInstance => Game.Instance;
+
+        public static CancellationToken CancellationToken => GameInstance.CancellationToken;
 
         public static bool TryGetService<T>(out T service, bool silent = true)
             where T : class, IService

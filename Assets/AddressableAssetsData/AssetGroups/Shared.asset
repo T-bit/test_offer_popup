@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Shared
+  m_EditorClassIdentifier: 
+  m_GroupName: Shared
+  m_Data:
+    m_SerializedData: []
+  m_GUID: acb22e2fa5052a145b8041066d8af5f4
+  m_SerializeEntries:
+  - m_GUID: 388149edf8fdb4846b034c38d836eaab
+    m_Address: Consumable/Wood
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c6e98c414e786f748a8de819be2793e2
+    m_Address: Consumable/Stone
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 68420e8377eab42458ab046b4a9ce498
+    m_Address: Consumable/Rope
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7199827d99b5c2e4fb3b9179dae7a61b
+    m_Address: Consumable/Ore
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7825cf1de50c09f4f93c0cb522a907e1
+    m_Address: Consumable/Grass
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 817302fbc3602e045aca849060a57917
+    m_Address: Consumable/Coal
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9641e8ceeee60574597fe13cb671c68f
+    m_Address: Assets/TestOfferPopup/Consumables/Coal_Icon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e34a2f1c22de44049a06bb3dccb407cc
+    m_Address: Assets/TestOfferPopup/Consumables/Grass_Icon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 239b8df9771718242b68bef2dacaf879
+    m_Address: Assets/TestOfferPopup/Consumables/Ore_Icon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 68c081501ba4c514fb7481605e24a8ef
+    m_Address: Assets/TestOfferPopup/Consumables/Wood_Icon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6eeaffb7d86c6d14a9ba39d3e4f4c034
+    m_Address: Assets/TestOfferPopup/Consumables/Rope_Icon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7a5c8529fe3f3544296e9aa8a4b0a55a
+    m_Address: Assets/TestOfferPopup/Consumables/Stone_Icon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ca7f3b1bce3b169418cdbea5bf868f13
+    m_Address: Offer/Offer_Wood
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ec264196fbb98c64e8bd0ae59531c1b6
+    m_Address: Offer/Offer_Resources
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f24fab29b949573409941d17b9fc644c
+    m_Address: Assets/TestOfferPopup/Offers/Offer_Wood_Icon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3d2d574a475bb8041b796d04fcb67e7c
+    m_Address: Assets/TestOfferPopup/Offers/Offer_Resources_Icon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 7d5306bef2667e746814134146121f51, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: c5268f16c83131547aa2fde19d8c7a11, type: 2}
+    - {fileID: 11400000, guid: 24070e26369ba71438a6a95282e87692, type: 2}

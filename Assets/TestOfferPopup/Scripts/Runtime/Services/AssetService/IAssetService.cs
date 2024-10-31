@@ -11,7 +11,8 @@ namespace TestOfferPopup.Services
     {
         IAssetCache AssetCache { get; }
 
-        UniTask<Object> LoadAsync(Reference reference, CancellationToken cancellationToken);
+        UniTask<Object> LoadAsync<T>(Reference reference, CancellationToken cancellationToken)
+            where T : class;
 
         void Unload(Reference reference);
     }
