@@ -19,6 +19,8 @@ namespace TestOfferPopup
 
         protected async UniTask<T> LoadAssetAsync(Reference<T> reference)
         {
+            // TODO: Rework to support external cancellation
+
             Clear();
             _cancellationTokenSource = new CancellationTokenSource();
 

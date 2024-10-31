@@ -17,6 +17,12 @@ namespace TestOfferPopup.Fragments
         [SerializeField]
         private Button _deleteButton;
 
+        public int ConsumableIndex => _consumableDropdown.value;
+
+        public uint Count => uint.TryParse(_countInputField.text, out var count)
+            ? count
+            : 0;
+
         public void Initialize(IEnumerable<string> consumableAddresses, int consumableIndex, uint count, Action<OfferConsumableView> deleteClick)
         {
             foreach (var consumableAddress in consumableAddresses)

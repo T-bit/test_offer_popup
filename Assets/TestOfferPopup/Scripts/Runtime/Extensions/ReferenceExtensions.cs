@@ -9,15 +9,16 @@ namespace TestOfferPopup.Extensions
 {
     public static class ReferenceExtensions
     {
-        public static UniTask<Object> LoadAsync(this Reference self, CancellationToken cancellationToken)
+        public static UniTask<Object> LoadAsync<T>(this Reference self, CancellationToken cancellationToken)
+            where T : class
         {
-            return AssetUtility.LoadAsync(self, cancellationToken);
+            return AssetUtility.LoadAsync<T>(self, cancellationToken);
         }
 
         public static async UniTask<T> LoadAsync<T>(this Reference<T> self, CancellationToken cancellationToken)
             where T : class
         {
-            var asset = await self.ToReference().LoadAsync(cancellationToken);
+            var asset = await self.ToReference().LoadAsync<T>(cancellationToken);
 
             switch (asset)
             {
@@ -31,6 +32,7 @@ namespace TestOfferPopup.Extensions
                     break;
             }
 
+            self.Unload();
             throw new InvalidCastException($"Unable to cast object {asset.name} of type {asset.GetType().Name} to type {typeof(T).Name}. {nameof(Reference.AssetGuid)}: {self.AssetGuid}");
         }
 

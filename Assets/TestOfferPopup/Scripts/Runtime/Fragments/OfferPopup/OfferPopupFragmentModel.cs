@@ -10,7 +10,7 @@ namespace TestOfferPopup.Fragments
 
         public string Description { get; set; }
 
-        public Reference<Sprite> Icon { get; set; }
+        public Reference<Sprite> IconReference { get; set; }
 
         public float Price { get; set; }
 

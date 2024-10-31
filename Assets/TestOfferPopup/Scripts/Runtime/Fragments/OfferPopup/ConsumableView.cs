@@ -23,12 +23,15 @@ namespace TestOfferPopup.Fragments
             _cancellationTokenSource?.CancelAndDispose();
             _cancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(gameObject.GetCancellationTokenOnDestroy());
 
+            _countText.text = count.ToString("N0");
 
+            InitializeAsync(consumableReference, _cancellationTokenSource.Token).Forget();
         }
 
-        private async UniTask InitializeAsync(Reference<IConsumable> consumableReference, uint count, CancellationToken cancellationToken)
+        private async UniTask InitializeAsync(Reference<IConsumable> consumableReference, CancellationToken cancellationToken)
         {
-
+            var consumable = await consumableReference.LoadAsync(cancellationToken);
+            await _iconImage.SetIconAsync(consumable.IconReference);
         }
 
         public void Release()

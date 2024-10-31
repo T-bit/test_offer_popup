@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using TestOfferPopup.Extensions;
 using TestOfferPopup.Utilities;
 using TMPro;
 using UnityEngine;
@@ -79,7 +80,7 @@ namespace TestOfferPopup.Fragments
             _purchaseButton.onClick.AddListener(OnPurchaseButtonClick);
             _closeButton.onClick.AddListener(OnCloseButtonClick);
 
-            return UniTask.CompletedTask;
+            return _iconImage.SetIconAsync(DerivedFragmentModel.IconReference);
         }
 
         protected override UniTask OnCloseAsync(CancellationToken cancellationToken)

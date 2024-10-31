@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
+using System.Linq;
 using Cysharp.Threading.Tasks;
 using TestOfferPopup.Consumables;
 using TestOfferPopup.Extensions;
@@ -189,7 +190,23 @@ namespace TestOfferPopup.Fragments
 
         private async UniTask OpenOfferPopupAsync(CancellationToken cancellationToken)
         {
-            var offerPopupModel = new OfferPopupFragmentModel();
+            var offerPopupModel = new OfferPopupFragmentModel
+            {
+                Title = _titleInputField.text,
+                Description = _descriptionInputField.text,
+                IconReference = _iconReference,
+                Price = float.TryParse(_priceInputField.text, out var price)
+                    ? price
+                    : 0f,
+                Discount = float.TryParse(_discountInputField.text, out var discount)
+                    ? discount
+                    : 0f,
+                Consumables = _offerConsumableViews.Select(item =>
+                    (AssetUtility.GetReferenceByAddress<IConsumable>(_consumableAddresses[item.ConsumableIndex]),
+                        item.Count)),
+                CloseSource = new UniTaskCompletionSource()
+            };
+
             await UIUtility.OpenFragmentAsync<OfferPopupView>(offerPopupModel, cancellationToken);
             await offerPopupModel.CloseSource.Task;
 
